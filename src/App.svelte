@@ -142,7 +142,14 @@
 		<div class="title">Projects</div>
 		<div class="projects">
 			<div class="project">
-				<div class="project-name">1. <a class="underline" href="https://todopomo.netlify.app" target="_blank">TodoPomo</a></div>
+				<div class="project-name product-hunt-sec">
+					<div class="left">
+						1. <a class="underline" href="https://todopomo.netlify.app" target="_blank">TodoPomo</a>
+					</div>
+					<div class="right">
+						<a href="https://www.producthunt.com/posts/todopomo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-todopomo" target="_blank"><img class="product-hunt-img" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334883&theme=light" alt="TodoPomo - Todo&#0032;list&#0032;with&#0032;Pomodoro&#0032;technique | Product Hunt" style="width: 250px; height: 54px;"/></a>
+					</div>
+				</div>
 				<div class="project-description">Todo list plus pomodoro timer app with music section. Work without any interruptions and take breaks in between to relax.</div>
 				<div class="project-technologies">Technologies: <span class="technology">HTML/CSS, JavaScript</span></div>
 			</div>
@@ -286,10 +293,19 @@
 	.project-name a{
 		color:var(--dark);
 	}
+	.product-hunt-sec{
+		margin-bottom: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.product-hunt-sec .right{
+		margin-left: 2rem;
+	}
 	.underline{
 		border-bottom: 2px solid var(--borderColor);
 	}
-	.project-name:hover .underline{
+	.underline:hover{
 		border-width: 3px;
 	}
 	.project-description{
@@ -383,6 +399,15 @@
 	@media(max-width: 475px){
 		.main{
 			width: 400px;
+		}
+		.product-hunt-sec{
+			align-items: flex-start;
+			justify-content: left;
+			flex-direction: column;
+		}
+		.right{
+			margin-top: 1rem;
+			margin-left: 0 !important;
 		}
 	}
 	@media(max-width: 425px){
