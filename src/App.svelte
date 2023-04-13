@@ -96,7 +96,7 @@
 	<div class="name-about-sec">
 		<div class="name title">Rubek Maharjan</div>
 		<div class="what">FrontEnd Developer / JavaScript Enthusiast</div>
-		<div class="more">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et ipsum facere illo, at qui nisi repellat suscipit assumenda autem molestiae! Deserunt, quis. Quo cumque similique totam incidunt error eligendi quaerat!</div>
+		<div class="more">I am a frontend developer and computer science student based on Kathmandu. I enjoy thinking about creative ideas or projects. Once I have an idea, I like to bring it to life through code.</div>
 		<div class="svg">
 			<svg width="200" height="9" viewBox="0 0 301 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g filter="url(#filter0_f_4_13)">
@@ -147,7 +147,11 @@
 						1. <a class="underline" href="https://todopomo.netlify.app" target="_blank">TodoPomo</a>
 					</div>
 					<div class="right">
+						{#if mode=='light'}
 						<a href="https://www.producthunt.com/posts/todopomo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-todopomo" target="_blank"><img class="product-hunt-img" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334883&theme=light" alt="TodoPomo - Todo&#0032;list&#0032;with&#0032;Pomodoro&#0032;technique | Product Hunt" style="width: 250px; height: 54px;"/></a>
+						{:else}
+						<a href="https://www.producthunt.com/posts/todopomo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-todopomo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334883&theme=dark" alt="TodoPomo - Todo&#0032;list&#0032;with&#0032;Pomodoro&#0032;technique | Product Hunt" style="width: 250px; height: 54px; border: 1px solid #fff; border-radius: 15px;"/></a>
+						{/if}
 					</div>
 				</div>
 				<div class="project-description">Todo list plus pomodoro timer app with music section. Work without any interruptions and take breaks in between to relax.</div>
