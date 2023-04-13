@@ -1,0 +1,33 @@
+:root{
+	--dark: rgb(46, 46, 46);
+	--medium: rgb(54,54,54);
+	--light: rgb(90,175,90);
+	--txtColor: rgb(0,0,0)
+	--borderColor: 'purple';
+	/* --borderColor: rgb(121,121,121); */
+}
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: 'Roboto Slab', serif;
+	line-height: 1.5rem;
+	transition: all 1s ease-out;
+	overflow-x: hidden;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+button{
+	outline: none;
+	cursor: pointer;
+}
+li{
+	list-style: none;
+}
+i{
+	cursor: pointer;
+}
