@@ -197,8 +197,8 @@
 		<div class="blogs underline" on:click={handleDisplayMsg}>/blogs</div>
 		<div class="contact">
 			<li><a href="mailto:rubekmhzn7@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
-			<li><a href="/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
-			<li><a href="/" target="_blank"><i class="fa-brands fa-square-github"></i></a></li>
+			<li><a href="https://linkedin.com/in/rubekk" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+			<li><a href="https://github.com/rubekk" target="_blank"><i class="fa-brands fa-square-github"></i></a></li>
 		</div>
 	</div>
 	<div class="poly-1">
