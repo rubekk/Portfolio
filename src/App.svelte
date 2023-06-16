@@ -120,6 +120,7 @@
 			<li>Tailwind CSS</li>
 			<li>SvelteKit</li>
 			<li>Firebase</li>
+			<li>MySQL</li>
 			<li>NodeJs</li>
 			<li>GIT</li>
 		</div>
