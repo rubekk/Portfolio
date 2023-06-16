@@ -175,7 +175,12 @@
 			<div class="project">
 				<div class="project-name">5. <a class="underline" href="https://instantcharts.netlify.app" target="_blank">Instant Charts</a></div>
 				<div class="project-description">Create different kinds of charts for various purposes. Instant chart creator.</div>
-				<div class="project-technologies">Technologies: <span class="technology">SvelteJs, HTML2Canva</span>s</div>
+				<div class="project-technologies">Technologies: <span class="technology">SvelteJs, HTML2Canvas</span></div>
+			</div>
+			<div class="project">
+				<div class="project-name">6. <a class="underline" href="https://envisiontravel.netlify.app" target="_blank">Envision Travel</a></div>
+				<div class="project-description">A single page travel agency website. Elegant and responsive.</div>
+				<div class="project-technologies">Technologies: <span class="technology">HTML/CSS, JavaScript</span></div>
 			</div>
 		</div>
 		<div class="svg">
