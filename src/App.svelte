@@ -183,6 +183,12 @@
 				<div class="project-description">A single page travel agency website. Elegant and responsive.</div>
 				<div class="project-technologies">Technologies: <span class="technology">HTML/CSS, JavaScript</span></div>
 			</div>
+			<div class="project">
+				<div class="project-name">6. <a class="underline" href="https://ktmguessr.netlify.app" target="_blank">KTM GUESSR</a></div>
+				<div class="project-description">Guess different places of Kathmandu based on the 360 view image. The closer you guess, the more points you get.</div>
+				<div class="project-technologies">Technologies: <span class="technology">SvelteKit, Firebase</span></div>
+			</div>
+
 		</div>
 		<div class="svg">
 			<svg width="200" height="9" viewBox="0 0 301 9" fill="none" xmlns="http://www.w3.org/2000/svg">
