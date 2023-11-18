@@ -161,7 +161,7 @@
 			<div class="project">
 				<div class="project-name">2. <a class="underline" href="https://mapchat.netlify.app" target="_blank">MapChat</a></div>
 				<div class="project-description">Realtime location based chat website on map. Chat and know where someone is chatting from.</div>
-				<div class="project-technologies">Technologies: <span class="technology">SvelteKit, LeafletJs</span></div>
+				<div class="project-technologies">Technologies: <span class="technology">SvelteKit, LeafletJs. Firebase</span></div>
 			</div>
 			<div class="project">
 				<div class="project-name">3. <a class="underline" href="https://districtsofnepal.netlify.app" target="_blank">Districts of Nepal</a></div>
