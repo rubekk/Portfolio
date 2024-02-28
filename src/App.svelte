@@ -122,6 +122,7 @@
 			<li>Firebase</li>
 			<li>MySQL</li>
 			<li>NodeJs</li>
+			<li>PHP</li>
 			<li>GIT</li>
 		</div>
 		<div class="svg">
