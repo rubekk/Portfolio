@@ -6,7 +6,6 @@
 		strokeColor,
 		polyColor,
 		locationTxt='Kathmandu, Nepal',
-		displayMsg=false,
 		time, 
 		formatter,
 		options={
@@ -14,8 +13,51 @@
 			hour: 'numeric',
 			minute: 'numeric',
 			second: 'numeric',
-		};
-
+		},
+		projectsData=[
+			{
+				"title": "Map Chat",
+				"link": "https://mapchat.netlify.app",
+				"description": "Realtime location based chat website on map. Chat and know where someone is chatting from.",
+				"technologies": "SvelteKit, Firebase"
+			},
+			{
+				"title": "Ktm Guessr",
+				"link": "https://ktmguessr.netlify.app",
+				"description": "Guess different places of Kathmandu based on the 360 view image. The closer you guess, the more points you get.",
+				"technologies": "SvelteKit, Firebase"
+			},
+			{
+				"title": "CG ko Malik",
+				"link": "https://cgkomalik.netlify.app",
+				"description": "Fun billionaire simulator website. Shop like Nepal's only billionaire, Binod Chaudhary.",
+				"technologies": "SvelteJs, HTML2Canvas"
+			},
+			{
+				"title": "Liquors Nepal",
+				"link": "https://github.com/rubekk/Liquors-Nepal",
+				"description": "An ecommerce website to sell liquor products",
+				"technologies": "PHP"
+			},
+			{
+				"title": "Envision Travel",
+				"link": "https://envisiontravel.netlify.app",
+				"description": "A single page travel agency website. Elegant and responsive.",
+				"technologies": "HTML/CSS, JavaScript"
+			},
+			{
+				"title": "Bipana Ko Ghar",
+				"link": "https://github.com/rubekk/Bipana-ko-Ghar",
+				"description": "Real Estate e-commerce website using PHP",
+				"technologies": "PHP"
+			},
+			{
+				"title": "Districts of Nepal",
+				"link": "https://districtsofnepal.netlify.app",
+				"description": "Fun web based game to guess the districts of Nepal either by clicking on the map or typing. Try getting the highest score.",
+				"technologies": "Sveltekit, Firebase"
+			}
+		];
 	setInterval(()=>getTime(), 1000);
 
 	const getTime=()=>{
@@ -47,11 +89,6 @@
 	}
 	const handleSize=()=>{
 		locationTxt=window.innerWidth<525?'Ktm, NP':'Kathmandu, Nepal';
-	}
-	const handleDisplayMsg=()=>{
-		displayMsg=true;
-
-		setTimeout(()=>displayMsg=false, 2500);
 	}
 	getTime();
 
@@ -93,10 +130,18 @@
 			</svg>	
 		</div>	
 	</div>
+
 	<div class="name-about-sec">
 		<div class="name title">Rubek Maharjan</div>
 		<div class="what">FrontEnd Developer / JavaScript Enthusiast</div>
 		<div class="more">I am a frontend developer and computer science student based on Kathmandu. I enjoy thinking about creative ideas or projects. Once I have an idea, I like to bring it to life through code.</div>
+
+		<div class="contact">
+			<li><a href="mailto:rubekmhzn7@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+			<li><a href="https://linkedin.com/in/rubekk" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+			<li><a href="https://github.com/rubekk" target="_blank"><i class="fa-brands fa-square-github"></i></a></li>
+		</div>
+
 		<div class="svg">
 			<svg width="200" height="9" viewBox="0 0 301 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g filter="url(#filter0_f_4_13)">
@@ -112,6 +157,7 @@
 			</svg>	
 		</div>
 	</div>
+
 	<div class="skills-sec">
 		<div class="title">Skills</div>
 		<div class="skills">
@@ -120,7 +166,9 @@
 			<li>Tailwind CSS</li>
 			<li>SvelteKit</li>
 			<li>Firebase</li>
+			<li>MySQL</li>
 			<li>NodeJs</li>
+			<li>PHP</li>
 			<li>GIT</li>
 		</div>
 		<div class="svg">
@@ -138,45 +186,20 @@
 			</svg>	
 		</div>
 	</div>
+	
 	<div class="projects-sec">
 		<div class="title">Projects</div>
 		<div class="projects">
-			<div class="project">
-				<div class="project-name product-hunt-sec">
-					<div class="left">
-						1. <a class="underline" href="https://todopomo.netlify.app" target="_blank">TodoPomo</a>
+			{#each projectsData as project, i}
+				<div class="project">
+					<div class="project-name">
+						{i+1}. <a class="underline" href={project.link} target="_blank">{project.title}</a>
+						<a href={project.link}><i class="fa-solid fa-link"></i></a>
 					</div>
-					<div class="right">
-						{#if mode=='light'}
-						<a href="https://www.producthunt.com/posts/todopomo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-todopomo" target="_blank"><img class="product-hunt-img" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334883&theme=light" alt="TodoPomo - Todo&#0032;list&#0032;with&#0032;Pomodoro&#0032;technique | Product Hunt" style="width: 250px; height: 54px;"/></a>
-						{:else}
-						<a href="https://www.producthunt.com/posts/todopomo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-todopomo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334883&theme=dark" alt="TodoPomo - Todo&#0032;list&#0032;with&#0032;Pomodoro&#0032;technique | Product Hunt" style="width: 250px; height: 54px; border: 1px solid #fff; border-radius: 15px;"/></a>
-						{/if}
-					</div>
+					<div class="project-description">{project.description}</div>
+					<div class="project-technologies">Technologies: <span class="technology">{project.technologies}</span></div>
 				</div>
-				<div class="project-description">Todo list plus pomodoro timer app with music section. Work without any interruptions and take breaks in between to relax.</div>
-				<div class="project-technologies">Technologies: <span class="technology">HTML/CSS, JavaScript</span></div>
-			</div>
-			<div class="project">
-				<div class="project-name">2. <a class="underline" href="https://districtsofnepal.netlify.app" target="_blank">Districts of Nepal</a></div>
-				<div class="project-description">Fun web based game to guess the districts of Nepal either by clicking on the map or typing. Try getting the highest score.</div>
-				<div class="project-technologies">Technologies: <span class="technology">SvelteKit, Firebase</span></div>
-			</div>
-			<div class="project">
-				<div class="project-name">3. <a class="underline" href="https://cgkomalik.netlify.app" target="_blank">CGkoMalik</a></div>
-				<div class="project-description">Fun billionaire simulator website. Shop like Nepal's only billionaire, Binod Chaudhary.</div>
-				<div class="project-technologies">Technologies: <span class="technology">SvelteJs, HTML2Canvas</span></div>
-			</div>
-			<div class="project">
-				<div class="project-name">4. <a class="underline" href="https://whichcolor.netlify.app" target="_blank">WhichColor?</a></div>
-				<div class="project-description">Extract colors from an image. Responsive and visually appealing website.</div>
-				<div class="project-technologies">Technologies: <span class="technology">HTML/CSS, JavaScript, Colorthief JS</span></div>
-			</div>
-			<div class="project">
-				<div class="project-name">5. <a class="underline" href="https://instantcharts.netlify.app" target="_blank">Instant Charts</a></div>
-				<div class="project-description">Create different kinds of charts for various purposes. Instant chart creator.</div>
-				<div class="project-technologies">Technologies: <span class="technology">SvelteJs, HTML2Canva</span>s</div>
-			</div>
+			{/each}
 		</div>
 		<div class="svg">
 			<svg width="200" height="9" viewBox="0 0 301 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -193,14 +216,15 @@
 			</svg>	
 		</div>
 	</div>
-	<div class="blogs-contact-sec">
-		<div class="blogs underline" on:click={handleDisplayMsg}>/blogs</div>
+	
+	<div class="contact-sec">
 		<div class="contact">
 			<li><a href="mailto:rubekmhzn7@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
 			<li><a href="https://linkedin.com/in/rubekk" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
 			<li><a href="https://github.com/rubekk" target="_blank"><i class="fa-brands fa-square-github"></i></a></li>
 		</div>
 	</div>
+
 	<div class="poly-1">
 		<svg width="100" height="200" viewBox="0 0 187 303" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path fill-rule="evenodd" clip-rule="evenodd" d="M186.8 169.395L21.1 302.243L186.8 169.395L21.1 302.243L0 0L186.8 169.395Z" fill={polyColor}/>
@@ -211,11 +235,6 @@
 			<path fill-rule="evenodd" clip-rule="evenodd" d="M186.8 169.395L21.1 302.243L186.8 169.395L21.1 302.243L0 0L186.8 169.395Z" fill={polyColor}/>
 		</svg>
 	</div>
-	{#if displayMsg}
-	<div class="msg">
-		<p>The page is not ready yet. Come back soon.</p>
-	</div>
-	{/if}
 </div>
 
 <style>
@@ -275,6 +294,9 @@
 	.more{
 		color:var(--medium);
 	}
+	.name-about-sec .contact{
+		margin-top: 2rem;
+	}
 	.skills{
 		flex-wrap: wrap;
 		row-gap: .5rem;
@@ -297,14 +319,13 @@
 	.project-name a{
 		color:var(--dark);
 	}
-	.product-hunt-sec{
-		margin-bottom: 1rem;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+	.project-name i{
+		margin-left: 1rem;
+		color: #797979;
+		transition: .3s;
 	}
-	.product-hunt-sec .right{
-		margin-left: 2rem;
+	.project-name i:hover{
+		color: #000;
 	}
 	.underline{
 		border-bottom: 2px solid var(--borderColor);
@@ -323,18 +344,11 @@
 		font-weight: bold;
 		font-style: italic;
 	}
-	.location, .contact{
+	.location{
 		margin-left: 3rem;
 	}
-	.blogs-contact-sec{
+	.contact-sec{
 		justify-content: space-between;
-	}
-	.blogs{
-		font-size: 1.25rem;
-		cursor: pointer;
-	}
-	.blogs:hover{
-		border-width: 3px;
 	}
 	.contact li{
 		margin: .5rem;
@@ -356,19 +370,6 @@
 		right: -15rem;
 		bottom: 10rem;
 		transform: rotate(-180deg);
-	}
-	.msg{
-		width: max-content;
-		padding: .25rem 1rem;
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		right: 50%;
-		transform: translateX(-50%);
-		font-style: italic;
-		border: 1px solid var(--borderColor);
-		background: #fff;
-		color: #000;
 	}
 
 	/* media queries */
@@ -403,11 +404,6 @@
 	@media(max-width: 475px){
 		.main{
 			width: 400px;
-		}
-		.product-hunt-sec{
-			align-items: flex-start;
-			justify-content: left;
-			flex-direction: column;
 		}
 		.right{
 			margin-top: 1rem;
