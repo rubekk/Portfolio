@@ -163,10 +163,14 @@
 		<div class="skills">
 			<li>HTML/CSS</li>
 			<li>JavaScript</li>
+			<li>TypeScript</li>
 			<li>Tailwind CSS</li>
+			<li>ReactJs</li>
+			<li>NextJs</li>
 			<li>SvelteKit</li>
 			<li>Firebase</li>
 			<li>MySQL</li>
+			<li>PostgreSQL</li>
 			<li>NodeJs</li>
 			<li>PHP</li>
 			<li>GIT</li>
