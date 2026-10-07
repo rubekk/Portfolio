@@ -18,8 +18,10 @@
 </section>
 
 <style>
+	/* minmax(0, …) lets wide content (e.g. a scroll rail) scroll instead of stretching the page. */
 	section {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 1.5rem;
 		padding-top: var(--section-gap);
 	}
@@ -31,15 +33,5 @@
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
 		color: var(--ink-muted);
-	}
-
-	@media (min-width: 48rem) {
-		section {
-			grid-template-columns: 11rem 1fr;
-			gap: 2rem;
-		}
-		h2 {
-			padding-top: 0.35rem;
-		}
 	}
 </style>

@@ -1,14 +1,16 @@
 <script lang="ts">
 	import Contact from './components/Contact.svelte';
 	import Hero from './components/Hero.svelte';
-	import ProjectList from './components/ProjectList.svelte';
+	import Projects from './components/Projects.svelte';
 	import Section from './components/Section.svelte';
 	import SkillList from './components/SkillList.svelte';
 	import SkyControl from './components/SkyControl.svelte';
 	import Sun from './components/Sun.svelte';
+	import Work from './components/Work.svelte';
 	import { contacts, profile } from './data/profile';
 	import { projects } from './data/projects';
 	import { skillGroups } from './data/skills';
+	import { work } from './data/work';
 	import { SkyClock } from './lib/clock.svelte';
 	import { applySky, describeSky } from './lib/sky';
 	import { sunPosition } from './lib/solar';
@@ -31,8 +33,14 @@
 	<main>
 		<Hero name={profile.name} role={profile.role} bio={profile.bio} />
 
-		<Section id="projects" title="Projects">
-			<ProjectList {projects} />
+		{#if work.length > 0}
+			<Section id="work" title="Work">
+				<Work items={work} />
+			</Section>
+		{/if}
+
+		<Section id="projects" title="Personal projects">
+			<Projects {projects} />
 		</Section>
 
 		<Section id="skills" title="Skills">
