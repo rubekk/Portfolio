@@ -1,0 +1,54 @@
+/*
+ * Colour is driven by the sun. `--daylight` (0–1) and `data-tone` on <html>
+ * are written by src/lib/sky.ts; everything below derives from them.
+ */
+@property --bg {
+	syntax: '<color>';
+	inherits: true;
+	initial-value: oklch(97.5% 0.012 85);
+}
+@property --ink {
+	syntax: '<color>';
+	inherits: true;
+	initial-value: oklch(22% 0.02 60);
+}
+
+:root {
+	--daylight: 1;
+	--sun-x: 50;
+	--sun-y: 20;
+	--sun-glow: 1;
+	--sun-hue: 85;
+	--sun-chroma: 0.1;
+	--name-shadow: none;
+
+	--paper-day: oklch(97.5% 0.012 85);
+	--paper-night: oklch(16% 0.02 265);
+	--bg: color-mix(in oklab, var(--paper-day) calc(var(--daylight) * 100%), var(--paper-night));
+	--ink: oklch(22% 0.02 60);
+
+	--ink-muted: color-mix(in oklab, var(--ink) 68%, var(--bg));
+	--line: color-mix(in oklab, var(--ink) 14%, var(--bg));
+	--accent: oklch(66% 0.17 50);
+
+	--font-display: 'Fraunces Variable', Georgia, serif;
+	--font-body: 'Inter Variable', system-ui, sans-serif;
+
+	--measure: 60rem;
+	--gutter: clamp(1.25rem, 5vw, 2.5rem);
+	--section-gap: clamp(4.5rem, 12vw, 8rem);
+
+	transition:
+		--bg 0.6s ease,
+		--ink 0.6s ease;
+}
+
+:root[data-tone='dark'] {
+	--ink: oklch(94% 0.01 85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		transition: none;
+	}
+}
