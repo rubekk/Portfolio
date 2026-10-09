@@ -12,12 +12,18 @@
 	import { skillGroups } from './data/skills';
 	import { work } from './data/work';
 	import { SkyClock } from './lib/clock.svelte';
+	import { daylightHours } from './lib/daylight';
 	import { applySky, describeSky } from './lib/sky';
 	import { sunPosition } from './lib/solar';
+	import { atMinuteOfDay } from './lib/time';
 
 	const clock = new SkyClock();
-	const sun = $derived(sunPosition(clock.date));
+	const sun = $derived(sunPosition(clock.skyDate));
 	const sky = $derived(describeSky(sun));
+
+	// Keyed on the day so sunrise and sunset are only recomputed when the date changes.
+	const dayStart = $derived(atMinuteOfDay(clock.date, 0).getTime());
+	const hours = $derived(daylightHours(new Date(dayStart)));
 
 	$effect(() => clock.start());
 	$effect(() => applySky(document.documentElement, sky));
@@ -27,7 +33,7 @@
 
 <div class="page">
 	<header>
-		<SkyControl {clock} place={profile.location} elevation={sun.elevation} />
+		<SkyControl {clock} place={profile.location} {hours} elevation={sun.elevation} />
 	</header>
 
 	<main>

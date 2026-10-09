@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { describeSky, longShadow } from './sky';
+import { describeSky, castShadow } from './sky';
 
 const noon = describeSky({ elevation: 60, azimuth: 180 });
 const morning = describeSky({ elevation: 15, azimuth: 100 });
@@ -27,6 +27,6 @@ describe('describeSky', () => {
 
 	it('hides the sun and its shadow at night', () => {
 		expect(midnight.glow).toBe(0);
-		expect(longShadow(midnight.shadow)).toBe('none');
+		expect(castShadow(midnight.shadow)).toBe('none');
 	});
 });

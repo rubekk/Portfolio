@@ -22,9 +22,12 @@ const smoothstep = (edge0: number, edge1: number, x: number) => {
 	return t * t * (3 - 2 * t);
 };
 
-const SHADOW_LENGTH_PER_UNIT = 0.17; // em of shadow per unit of (height / shadow length)
-const SHADOW_MAX_LENGTH = 0.75; // em
+const SHADOW_LENGTH_PER_UNIT = 0.12; // em of shadow per unit of (height / shadow length)
+const SHADOW_MAX_LENGTH = 0.4; // em
 const SHADOW_DROP = 0.5; // how much of the length falls downwards rather than sideways
+
+/** Daylight at which the page flips between light and dark text. Past dusk, so dusk reads dark. */
+const LIGHT_TONE_FROM = 0.6;
 
 export function describeSky({ elevation, azimuth }: SunPosition): Sky {
 	const daylight = smoothstep(-6, 8, elevation);
@@ -37,7 +40,7 @@ export function describeSky({ elevation, azimuth }: SunPosition): Sky {
 
 	return {
 		daylight,
-		tone: daylight >= 0.5 ? 'light' : 'dark',
+		tone: daylight >= LIGHT_TONE_FROM ? 'light' : 'dark',
 		sunX: 50 + eastWest * 42,
 		sunY: lerp(88, 14, clamp(elevation, 0, 70) / 70),
 		glow: smoothstep(-4, 6, elevation),
@@ -51,17 +54,21 @@ export function describeSky({ elevation, azimuth }: SunPosition): Sky {
 	};
 }
 
-const SHADOW_STEPS = 36;
+const SHADOW_LAYERS = 5;
 
-/** A `text-shadow` value: a soft, fading trail of copies stretching away from the sun. */
-export function longShadow({ x, y, strength }: Sky['shadow']): string {
+/**
+ * A `text-shadow` value: a few layers stretching away from the sun, each a little
+ * softer than the last, so the shadow reads as light falling off, not as a smear.
+ */
+export function castShadow({ x, y, strength }: Sky['shadow']): string {
 	if (strength < 0.01) return 'none';
 
-	const layers = Array.from({ length: SHADOW_STEPS }, (_, index) => {
-		const t = (index + 1) / SHADOW_STEPS;
-		const alpha = Math.round(strength * (1 - t) ** 1.4 * 14 * 10) / 10;
+	const layers = Array.from({ length: SHADOW_LAYERS }, (_, index) => {
+		const t = (index + 1) / SHADOW_LAYERS;
+		const alpha = (strength * 11 * (1 - 0.6 * t)).toFixed(1);
+		const blur = (0.01 + 0.07 * t).toFixed(3);
 		const color = `color-mix(in srgb, var(--ink) ${alpha}%, transparent)`;
-		return `${(x * t).toFixed(3)}em ${(y * t).toFixed(3)}em 0 ${color}`;
+		return `${(x * t).toFixed(3)}em ${(y * t).toFixed(3)}em ${blur}em ${color}`;
 	});
 	return layers.join(', ');
 }
@@ -74,7 +81,9 @@ export function skyToCssVars(sky: Sky): Record<string, string> {
 		'--sun-glow': sky.glow.toFixed(3),
 		'--sun-hue': sky.sunHue.toFixed(1),
 		'--sun-chroma': sky.sunChroma.toFixed(3),
-		'--name-shadow': longShadow(sky.shadow),
+		'--dusk-in': clamp(sky.daylight * 2, 0, 1).toFixed(3),
+		'--dusk-out': clamp(sky.daylight * 2 - 1, 0, 1).toFixed(3),
+		'--name-shadow': castShadow(sky.shadow),
 	};
 }
 
